@@ -1,0 +1,32 @@
+##logconfig
+[[Filters]]
+    enabled= "true"	#If or not open Filter.
+    type= "console"	#type: console mem file socket
+    tag= "stdout"
+    level= "TRACE"  	#You can use DEBUG TRACE INFO WARNING ERROR CRITICAL level.
+    [[Filters.Properties]]
+        name = "color"
+        value = "true"
+    [[Filters.Properties]]
+        name ="format"
+        value = "[%D %m] [%L] %M (%s)"
+[[Filters]]
+    enabled= "true"
+    type= "file"
+    tag= "file"
+    level= "DEBUG"
+    [[Filters.Properties]]
+        name ="filename"
+        value = "test"
+    [[Filters.Properties]]
+        name ="format"
+        value = "[%D %m] [%L] %M (%s)"
+    [[Filters.Properties]]
+        name ="bufsize"
+        value = "4M"  
+    [[Filters.Properties]]
+        name ="compress"
+        value = "false" 
+    [[Filters.Properties]]
+        name ="path"
+        value = "./" 
