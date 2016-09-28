@@ -7,7 +7,9 @@ import (
 func main() {
 	//default use config.toml from current dir
 	//console and file
-	StartLogServer("config.toml")
+	//StartLogServer("config.toml")
+
+	StartLogServer()
 	defer StopLogServer()
 
 	LogInfof("This is good start. %s", "Yes")
