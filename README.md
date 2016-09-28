@@ -8,6 +8,7 @@ Installation:
 - Run `go install github.com/goldenspider/log4go`
 
 # Example
+* [example.go](examples/example.go)
 ```go
 package main
 
