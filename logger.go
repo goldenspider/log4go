@@ -18,7 +18,6 @@ func StopLogServer() {
 	log.Close()
 }
 
-//func collecParams(dst []interface{}, params ...interface{})
 func LogDebugf(format string, params ...interface{}) {
 	log.Debug(format, params...)
 }
