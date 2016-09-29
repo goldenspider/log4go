@@ -2,4 +2,5 @@ trace*.*
 *.log
 *.out
 _*
+*.exe
 

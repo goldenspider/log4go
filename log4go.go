@@ -37,9 +37,7 @@ const (
 type Level int
 
 const (
-	FINEST Level = iota
-	FINE
-	DEBUG
+	DEBUG Level = iota
 	TRACE
 	INFO
 	WARNING
@@ -52,7 +50,7 @@ const DefaultFileDepth int = 3
 
 // Logging level strings
 var (
-	levelStrings = [...]string{"FNST", "FINE", "DEBG", "TRAC", "INFO", "WARN", "EROR", "CRIT"}
+	levelStrings = [...]string{"DEBG", "TRAC", "INFO", "WARN", "EROR", "CRIT"}
 )
 
 func (l Level) String() string {
@@ -365,44 +363,6 @@ func (log Logger) Logf(lvl Level, format string, args ...interface{}) {
 // its source.  If no log message would be written, the closure is never called.
 func (log Logger) Logc(lvl Level, closure func() string) {
 	log.intLogc(lvl, closure)
-}
-
-// Finest logs a message at the finest log level.
-// See Debug for an explanation of the arguments.
-func (log Logger) Finest(arg0 interface{}, args ...interface{}) {
-	const (
-		lvl = FINEST
-	)
-	switch first := arg0.(type) {
-	case string:
-		// Use the string as a format string
-		log.intLogf(lvl, first, args...)
-	case func() string:
-		// Log the closure (no other arguments used)
-		log.intLogc(lvl, first)
-	default:
-		// Build a format string so that it will be similar to Sprint
-		log.intLogf(lvl, fmt.Sprint(arg0)+strings.Repeat(" %v", len(args)), args...)
-	}
-}
-
-// Fine logs a message at the fine log level.
-// See Debug for an explanation of the arguments.
-func (log Logger) Fine(arg0 interface{}, args ...interface{}) {
-	const (
-		lvl = FINE
-	)
-	switch first := arg0.(type) {
-	case string:
-		// Use the string as a format string
-		log.intLogf(lvl, first, args...)
-	case func() string:
-		// Log the closure (no other arguments used)
-		log.intLogc(lvl, first)
-	default:
-		// Build a format string so that it will be similar to Sprint
-		log.intLogf(lvl, fmt.Sprint(arg0)+strings.Repeat(" %v", len(args)), args...)
-	}
 }
 
 // Debug is a utility method for debug log messages.

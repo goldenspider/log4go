@@ -137,10 +137,6 @@ func (log Logger) ConfigToLogWriter(filename string, cfg *Config) {
 		}
 
 		switch kvfilt.Level {
-		case "FINEST":
-			lvl = FINEST
-		case "FINE":
-			lvl = FINE
 		case "DEBUG":
 			lvl = DEBUG
 		case "TRACE":
