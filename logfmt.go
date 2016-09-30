@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strings"
 	"time"
+	"unicode"
 )
 
 const (
@@ -98,7 +99,8 @@ func FormatLogRecord(format string, rec *LogRecord) string {
 				slice := strings.Split(rec.Source, "/")
 				out.WriteString(slice[len(slice)-1])
 			case 'M':
-				out.WriteString(rec.Message)
+				msg := strings.TrimRightFunc(rec.Message, unicode.IsSpace)
+				out.WriteString(msg)
 			}
 			if len(piece) > 1 {
 				out.Write(piece[1:])
@@ -107,10 +109,8 @@ func FormatLogRecord(format string, rec *LogRecord) string {
 			out.Write(piece)
 		}
 	}
-	endsInNL := strings.HasSuffix(out.String(), "\n")
-	if !endsInNL {
-		out.WriteByte('\n')
-	}
+
+	out.WriteByte('\n')
 
 	return out.String()
 }
