@@ -18,5 +18,4 @@ func main() {
 
 	LogInfof("This is good start. %s", test())
 	LogWarn(test(), " Are you ready now? ", "OK")
-
 }
