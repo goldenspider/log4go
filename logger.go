@@ -19,52 +19,52 @@ func StopLogServer() {
 }
 
 func LogDebugf(format string, params ...interface{}) {
-	log.Debug(format, params...)
+	log.debug(format, params...)
 }
 
 func LogTracef(format string, params ...interface{}) {
-	log.Trace(format, params...)
+	log.trace(format, params...)
 }
 
 func LogInfof(format string, params ...interface{}) {
-	log.Info(format, params...)
+	log.info(format, params...)
 }
 
-func LogWarnf(format string, params ...interface{}) {
-	log.Warn(format, params...)
+func LogWarnf(format string, params ...interface{}) error {
+	return log.warn(format, params...)
 }
 
-func LogErrorf(format string, params ...interface{}) {
-	log.Error(format, params...)
+func LogErrorf(format string, params ...interface{}) error {
+	return log.error(format, params...)
 }
 
-func LogCriticalf(format string, params ...interface{}) {
-	log.Critical(format, params...)
+func LogCriticalf(format string, params ...interface{}) error {
+	return log.critical(format, params...)
 }
 
 ///////////////////////////////////////////////////
 func LogDebug(v ...interface{}) {
-	log.Debug("%s", fmt.Sprint(v...))
+	log.debug("%s", fmt.Sprint(v...))
 }
 
 func LogTrace(v ...interface{}) {
-	log.Trace("%s", fmt.Sprint(v...))
+	log.trace("%s", fmt.Sprint(v...))
 }
 
 func LogInfo(v ...interface{}) {
-	log.Info("%s", fmt.Sprint(v...))
+	log.info("%s", fmt.Sprint(v...))
 }
 
-func LogWarn(v ...interface{}) {
-	log.Warn("%s", fmt.Sprint(v...))
+func LogWarn(v ...interface{}) error {
+	return log.warn("%s", fmt.Sprint(v...))
 }
 
-func LogError(v ...interface{}) {
-	log.Error("%s", fmt.Sprint(v...))
+func LogError(v ...interface{}) error {
+	return log.error("%s", fmt.Sprint(v...))
 }
 
-func LogCritical(v ...interface{}) {
-	log.Critical("%s", fmt.Sprint(v...))
+func LogCritical(v ...interface{}) error {
+	return log.critical("%s", fmt.Sprint(v...))
 }
 
 func LogFlush() {
