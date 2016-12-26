@@ -57,6 +57,9 @@ func (c *FileLogWriter) SetCompress(compress bool) {
 
 func (c *FileLogWriter) SetPath(path string) {
 	c.path = filepath.Clean(path) + "/"
+	if err := os.MkdirAll(path, 0777); err != nil {
+		fmt.Fprint(os.Stderr, "can not create mem log path at ", path, err)
+	}
 	return
 }
 
