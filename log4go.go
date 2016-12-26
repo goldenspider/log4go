@@ -310,37 +310,38 @@ func (log Logger) Json(data []byte) {
 }
 
 //=================================================================
-func (log Logger) debug(arg0 string, args ...interface{}) {
+func (log Logger) Debug(arg0 string, args ...interface{}) {
 	log.intLogf(DEBUG, arg0, args...)
 
 }
 
-func (log Logger) trace(arg0 string, args ...interface{}) {
+func (log Logger) Trace(arg0 string, args ...interface{}) {
 	log.intLogf(TRACE, arg0, args...)
 
 }
 
-func (log Logger) info(arg0 string, args ...interface{}) {
+func (log Logger) Info(arg0 string, args ...interface{}) {
 	log.intLogf(INFO, arg0, args...)
 }
 
-func (log Logger) warn(arg0 string, args ...interface{}) error {
+func (log Logger) Warn(arg0 string, args ...interface{}) error {
 	msg := fmt.Sprintf(arg0, args...)
 
 	log.intLogf(WARNING, msg)
 	return errors.New(msg)
 }
 
-func (log Logger) error(arg0 string, args ...interface{}) error {
+func (log Logger) Error(arg0 string, args ...interface{}) error {
 	msg := fmt.Sprintf(arg0, args...)
 
 	log.intLogf(ERROR, msg)
 	return errors.New(msg)
 }
 
-func (log Logger) critical(arg0 string, args ...interface{}) error {
+func (log Logger) Critical(arg0 string, args ...interface{}) error {
 	msg := fmt.Sprintf(arg0, args...)
 
 	log.intLogf(CRITICAL, msg)
 	return errors.New(msg)
 }
+
